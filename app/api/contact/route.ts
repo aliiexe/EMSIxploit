@@ -56,13 +56,16 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json(
+        { error: "Failed to send message. Please try again later." },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true, id: data?.id });
-  } catch (e) {
+  } catch {
     return NextResponse.json(
-      { error: e instanceof Error ? e.message : "Failed to send" },
+      { error: "Unexpected error. Please try again later." },
       { status: 500 }
     );
   }
