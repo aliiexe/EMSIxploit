@@ -28,7 +28,7 @@ export const manualCompetitions: Competition[] = [
     id: "1",
     name: "Cyber Odyssey",
     organizer: "Akasec 1337",
-    date: "2024-03-15",
+    date: "2025-03-15",
     place: 10,
     totalTeams: 26,
     points: 3631,
