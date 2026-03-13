@@ -48,7 +48,7 @@ export const manualCompetitions: Competition[] = [
     place: null,
     totalTeams: null,
     points: null,
-    teamSize: 4,
+    teamSize: 5,
     eventStart: "2026-03-12",
     eventFinish: "2026-04-08",
   },

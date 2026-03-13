@@ -23,7 +23,7 @@ export function Home({
 
   return (
     <>
-      <section className="relative -mt-24 overflow-hidden bg-black">
+      <section className="relative -mt-24 overflow-hidden">
         <AuroraBackground>
           <div className="mx-auto w-full max-w-3xl px-8 text-center sm:px-10 md:px-12 lg:px-16">
             <div className="hero-entrance hero-badge">

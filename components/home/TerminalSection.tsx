@@ -223,7 +223,7 @@ export function TerminalSection() {
                 <div key={i} className="py-0.5">
                   {/* Command row: stays on its own line */}
                   {(hasCommand || !hasOutput) && (
-                    <div className="flex flex-wrap gap-x-2">
+                    <div className="flex items-center gap-x-2 overflow-hidden whitespace-nowrap">
                       <span className="text-[var(--accent)] shrink-0">{line.prompt}</span>
                       {!isGlitching ? (
                         hasCommand && (
@@ -244,12 +244,12 @@ export function TerminalSection() {
                   {/* Output row: stays on its own line, transforms in place */}
                   {hasOutput && (
                     <div
-                      className={`flex flex-wrap gap-x-2 pl-4 sm:pl-0 ${
+                      className={`flex gap-x-2 pl-4 sm:pl-0 overflow-hidden whitespace-nowrap ${
                         !isGlitching ? "text-[var(--text-muted)]" : ""
                       }`}
                     >
                       {!isGlitching ? (
-                        <span className="block w-full">{line.output}</span>
+                        <span className="block w-full truncate">{line.output}</span>
                       ) : (
                         <>
                           {outBinary && (
@@ -266,9 +266,9 @@ export function TerminalSection() {
               );
             })}
             {showTerminal && (
-              <div className="mt-1 flex flex-wrap items-center gap-x-1 gap-y-0">
+              <div className="mt-1 flex items-center gap-x-1 whitespace-nowrap overflow-hidden">
                 <span className="text-[var(--accent)]">$</span>
-                <span className="text-[var(--text-primary)]">
+                <span className="text-[var(--text-primary)] truncate">
                   {CURSOR_PHRASES[phraseIndex].slice(0, cursorTextLen)}
                 </span>
                 <span

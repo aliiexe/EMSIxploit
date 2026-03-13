@@ -101,7 +101,7 @@ export function AboutContent({ ctfEventsCount }: { ctfEventsCount: number }) {
 
       <section className="mx-auto max-w-[1200px] px-6 py-20 sm:px-8 md:px-10" data-animated-section>
         <p className="text-center text-sm uppercase tracking-wider text-[var(--text-muted)]">
-          Trusted by & affiliated with
+          Communities & events we&apos;ve joined
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-10">
           {ABOUT_AFFILIATES.map((name) => (

@@ -1,15 +1,11 @@
 "use client";
 
 import React from "react";
-import { LogoWatermark } from "@/components/ui/LogoWatermark";
 
 export function AuroraBackground({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex min-h-[100vh] w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
+    <div className="relative flex min-h-[100vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white">
       <div className="hero-glow-wrap absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <LogoWatermark imageClassName="w-[min(85vw,680px)] h-auto opacity-[0.09] -rotate-12 object-contain" />
-        </div>
         <div
           style={{
             position: "absolute",

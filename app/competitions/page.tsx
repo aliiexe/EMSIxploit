@@ -143,7 +143,7 @@ async function CompetitionsContent() {
         <h2 className="mb-6 text-xl font-extrabold tracking-[-0.03em] text-[var(--text-primary)]">
           Competition timeline
         </h2>
-        <div className="space-y-0">
+        <div className="space-y-4 sm:space-y-5">
           {sorted.map((c, i) => (
             <CompetitionRow
               key={c.id}
@@ -209,15 +209,21 @@ function CompetitionRow({
   const isLive = isCompetitionLive(competition);
   return (
     <div
-      className={`flex gap-6 border-l-2 pl-6 pb-8 ${
-        isLast ? "pb-0" : ""
+      className={`flex gap-6 border-l-2 pl-6 ${
+        isLast ? "" : "pb-2 sm:pb-3"
       } ${
         isLive
-          ? "border-[var(--accent)]/50 bg-[var(--accent)]/5 -ml-px rounded-r-xl"
-          : "border-[var(--glass-border)]"
+          ? "border-[var(--accent)]/70 -ml-px"
+          : "border-[var(--glass-border)]/80 -ml-px"
       }`}
     >
-      <div className="flex-1">
+      <div
+        className={`flex-1 rounded-xl border px-4 py-4 sm:px-5 sm:py-5 transition-[border,background,transform,box-shadow] duration-[0.35s] ${
+          isLive
+            ? "border-[var(--accent)]/60 bg-[var(--accent)]/10 shadow-[0_0_28px_rgba(36,233,46,0.25)]"
+            : "border-[var(--glass-border)] bg-[var(--glass-bg)] hover:-translate-y-[2px] hover:shadow-[0_0_24px_rgba(0,0,0,0.45)]"
+        }`}
+      >
         <div className="flex flex-wrap items-center gap-2">
           <p className="font-mono text-xs text-[var(--text-muted)]">
             {formatDate(competition.date)}
