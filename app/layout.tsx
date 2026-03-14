@@ -8,6 +8,7 @@ import { LogoWatermark } from "@/components/ui/LogoWatermark";
 import { SearchModalRoot } from "@/components/search/SearchModalRoot";
 import { LiveBanner } from "@/components/ctftime/LiveBanner";
 import { currentLiveCtf } from "@/data/live";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "emsixploit — Cyber Security Club",
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <Analytics />
         <ParticleBackground />
         <div className="fixed inset-0 z-0 flex items-center justify-center">
           <LogoWatermark />
