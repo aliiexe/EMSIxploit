@@ -55,11 +55,7 @@ export interface FeatureCard {
 
 /** Home page "Explore" feature cards (Projects, Competitions, Resources). */
 export const FEATURE_CARDS: FeatureCard[] = [
-  {
-    title: "Projects",
-    description: "CTF write-ups, security tools, and research.",
-    href: "/projects",
-  },
+  // { title: "Projects", description: "CTF write-ups, security tools, and research.", href: "/projects" },
   {
     title: "Competitions",
     description: "Our track record and upcoming events.",

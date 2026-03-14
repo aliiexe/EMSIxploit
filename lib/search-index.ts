@@ -24,7 +24,7 @@ export async function buildSearchIndex(): Promise<SearchEntry[]> {
     { href: "/", title: "Home", description: "We secure. We hack. We grow." },
     { href: "/about", title: "About", description: "Club story, mission, and values." },
     { href: "/team", title: "Team", description: "The people behind the club." },
-    { href: "/projects", title: "Projects", description: PROJECTS_PAGE_DESCRIPTION },
+    // { href: "/projects", title: "Projects", description: PROJECTS_PAGE_DESCRIPTION },
     { href: "/competitions", title: "Competitions", description: "CTF and security competition results." },
     { href: "/news", title: "News & Events", description: "Meetups, workshops, and announcements." },
     { href: "/resources", title: "Resources", description: "Learning materials and guides." },
@@ -53,19 +53,11 @@ export async function buildSearchIndex(): Promise<SearchEntry[]> {
     });
   }
 
-  // Projects
-  const projects = await getAllProjects();
-  for (const p of projects) {
-    entries.push({
-      id: `project-${p.slug}`,
-      title: p.title,
-      description: p.excerpt,
-      category: "project",
-      tags: p.tags,
-      href: `/projects/${p.slug}`,
-      date: p.date,
-    });
-  }
+  // Projects (hidden for now)
+  // const projects = await getAllProjects();
+  // for (const p of projects) {
+  //   entries.push({ id: `project-${p.slug}`, title: p.title, description: p.excerpt, category: "project", tags: p.tags, href: `/projects/${p.slug}`, date: p.date });
+  // }
 
   // Competitions (each event searchable, links to competitions page)
   for (const c of competitions) {

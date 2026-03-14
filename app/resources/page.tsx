@@ -112,12 +112,9 @@ export default function ResourcesPage() {
           <p className="mt-2 text-sm leading-[1.7] text-[var(--text-muted)]">
             {RESOURCES_CLUB_BLURB}
           </p>
-          <Link
-            href="/projects"
-            className="mt-4 inline-flex rounded-full bg-[var(--accent-dim)] px-5 py-2.5 text-sm font-semibold text-[#040a06] transition-opacity duration-[0.4s] hover:opacity-90"
-          >
+          {/* <Link href="/projects" className="mt-4 inline-flex rounded-full bg-[var(--accent-dim)] px-5 py-2.5 text-sm font-semibold text-[#040a06] transition-opacity duration-[0.4s] hover:opacity-90">
             {RESOURCES_CTA_LABEL}
-          </Link>
+          </Link> */}
         </div>
       </section>
     </>
