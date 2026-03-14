@@ -44,7 +44,7 @@ export function Home({
             </p>
             <div className="hero-entrance hero-buttons mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link href="/contact" className="hero-btn-primary group inline-flex items-center gap-2 rounded-full bg-[#24E92E] px-8 py-3 text-base font-semibold text-[#040a06] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(36,233,46,0.4)]">
-                Join the club
+                Get in touch
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
               <Link href="/about" className="hero-btn-secondary inline-flex items-center rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] px-8 py-3 text-base font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:border-[rgba(36,233,46,0.4)]">

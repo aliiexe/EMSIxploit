@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Github, Linkedin, Twitter, Globe } from "lucide-react";
 import type { Member } from "@/data/members";
 
 const ROLE_LABELS: Record<Member["role"], string> = {
@@ -13,6 +14,9 @@ const ROLE_LABELS: Record<Member["role"], string> = {
   staff: "Staff",
 };
 
+const linkIconClass =
+  "flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-[var(--accent)] hover:text-black";
+
 type TeamCardProps = {
   member: Member;
   delay?: number;
@@ -20,6 +24,10 @@ type TeamCardProps = {
 
 export function TeamCard({ member, delay = 0 }: TeamCardProps) {
   const title = member.keyRole ?? ROLE_LABELS[member.role];
+  const links = member.links;
+  const hasLinks =
+    links &&
+    (links.github || links.linkedin || links.twitter || links.website);
 
   return (
     <motion.div
@@ -55,6 +63,60 @@ export function TeamCard({ member, delay = 0 }: TeamCardProps) {
               .split(" ")
               .map((n) => n[0])
               .join("")}
+          </div>
+        )}
+        {/* Black gradient overlay on hover */}
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          aria-hidden
+        />
+        {/* Links on hover */}
+        {hasLinks && (
+          <div className="absolute inset-0 flex items-end justify-center gap-2 pb-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            {links.github && (
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkIconClass}
+                aria-label={`${member.name} on GitHub`}
+              >
+                <Github className="h-4 w-4" />
+              </a>
+            )}
+            {links.linkedin && (
+              <a
+                href={links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkIconClass}
+                aria-label={`${member.name} on LinkedIn`}
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+            )}
+            {links.twitter && (
+              <a
+                href={links.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkIconClass}
+                aria-label={`${member.name} on X (Twitter)`}
+              >
+                <Twitter className="h-4 w-4" />
+              </a>
+            )}
+            {links.website && (
+              <a
+                href={links.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkIconClass}
+                aria-label={`${member.name} website`}
+              >
+                <Globe className="h-4 w-4" />
+              </a>
+            )}
           </div>
         )}
       </div>

@@ -12,6 +12,7 @@ import {
   Loader2,
   Linkedin,
   Trophy,
+  Github,
   Building2,
   Instagram,
 } from "lucide-react";
@@ -44,6 +45,7 @@ const SUBJECT_OPTIONS: { value: FormData["subject"]; label: string }[] = [
 ];
 
 const SOCIAL_LINKS = [
+  { href: "https://github.com/EMSIxploit-Club", label: "GitHub", icon: Github },
   { href: "https://ctftime.org/team/414843", label: "CTFtime", icon: Trophy },
   { href: "https://www.linkedin.com/in/emsixploit-cyber-security-club-513079371/", label: "LinkedIn", icon: Linkedin },
   { href: "https://www.instagram.com/emsixploit/", label: "Instagram", icon: Instagram },
@@ -245,22 +247,15 @@ export default function ContactPage() {
 
         <section className="mb-16" data-animated-section>
           <a
-            href="mailto:collab@example.com"
+            href="mailto:support@emsixploit.com"
             className="block glass-card p-8 transition-[transform,box-shadow] duration-[0.4s] hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(36,233,46,0.2)] sm:p-10"
           >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-[var(--accent)]/20">
-                <Building2 className="h-6 w-6 text-[var(--accent)]" />
-              </div>
-              <div>
-                <h2 className="text-xl font-extrabold tracking-[-0.03em] text-[var(--text-primary)]">
-                  Interested in collaborating?
-                </h2>
-                <p className="mt-2 leading-[1.7] text-[var(--text-muted)]">
-                  Companies and researchers: partner with us for talks, workshops, or events. Get in touch above or email us directly.
-                </p>
-              </div>
-            </div>
+            <h2 className="text-xl font-extrabold tracking-[-0.03em] text-[var(--text-primary)]">
+              Interested in collaborating?
+            </h2>
+            <p className="mt-2 leading-[1.7] text-[var(--text-muted)]">
+              Companies and researchers: partner with us for talks, workshops, or events. Get in touch above or email us directly.
+            </p>
           </a>
         </section>
 

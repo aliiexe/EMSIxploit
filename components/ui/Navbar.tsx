@@ -96,7 +96,7 @@ export function Navbar() {
               href="/contact"
               className="navbar-join hidden min-[769px]:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold"
             >
-              Join us
+              Get in touch
             </Link>
             <button
               type="button"
@@ -206,7 +206,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="flex w-full items-center justify-center rounded-full bg-[#24E92E] py-[0.85rem] font-semibold text-[#040a06]"
                 >
-                  Join us
+                  Get in touch
                 </Link>
               </motion.div>
             </div>

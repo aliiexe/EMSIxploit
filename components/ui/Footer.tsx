@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Trophy, Linkedin, Instagram } from "lucide-react";
+import { Trophy, Github, Linkedin, Instagram } from "lucide-react";
 import { NationalRankBadge } from "@/components/ctftime/NationalRankBadge";
 
 const QUICK_LINKS = [
@@ -14,6 +14,7 @@ const QUICK_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
+  { href: "https://github.com/EMSIxploit-Club", label: "GitHub", icon: Github },
   { href: "https://ctftime.org/team/414843", label: "CTFtime", icon: Trophy },
   { href: "https://www.linkedin.com/in/emsixploit-cyber-security-club-513079371/", label: "LinkedIn", icon: Linkedin },
   { href: "https://www.instagram.com/emsixploit/", label: "Instagram", icon: Instagram },

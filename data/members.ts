@@ -61,7 +61,7 @@ export const members: Member[] = [
     bio: "Security enthusiast. Focus on offensive security and club growth.",
     avatar: "/team/moncefdiraa.jpeg",
     achievement: "1st place — University CTF 2024",
-    links: { github: "https://github.com", linkedin: "https://linkedin.com" },
+    links: { github: "https://github.com/Diraa-moncef", linkedin: "https://www.linkedin.com/in/moncef-diraa-5137562a0/" },
   },
   {
     id: "2",
@@ -71,7 +71,7 @@ export const members: Member[] = [
     bio: "Building bridges between industry and students.",
     avatar: "/team/younestarik.png",
     achievement: "Speaker — BSides 2024",
-    links: { github: "https://github.com", linkedin: "https://linkedin.com" },
+    links: { github: "https://github.com/YOUNESTARIK", linkedin: "https://www.linkedin.com/in/younes-tarik-242594321/" },
   },
   {
     id: "3",
@@ -81,7 +81,7 @@ export const members: Member[] = [
     bio: "Malware analysis and threat intelligence.",
     avatar: "/team/youssefdirgham.png",
     achievement: "CVE-2024-XXXXX — co-author",
-    links: { github: "https://github.com", website: "https://example.com" },
+    links: { github: "https://github.com/sultan56", linkedin: "https://www.linkedin.com/in/youssef-dirgham-21274aab/"},
   },
   {
     id: "4",
@@ -91,7 +91,7 @@ export const members: Member[] = [
     bio: "Exploit dev and web security. Loves pwn and crypto.",
     avatar: "/team/alibourak.png",
     achievement: "Top 10 — DEF CON CTF qualifiers",
-    links: { github: "https://github.com", twitter: "https://twitter.com" },
+    links: { github: "https://github.com/aliiexe", linkedin: "https://linkedin.com/in/ali-bourak", website: "https://alibourak.vercel.app" },
   },
   {
     id: "5",
@@ -101,7 +101,7 @@ export const members: Member[] = [
     bio: "Web and binary exploitation. HTB Pro.",
     avatar: "/team/chouaibmachhour.png",
     achievement: "50+ HTB machines",
-    links: { github: "https://github.com" },
+    links: {linkedin: "https://www.linkedin.com/in/chouaib-machhour-916319329/" },
   },
   {
     id: "6",
@@ -110,7 +110,7 @@ export const members: Member[] = [
     keyRole: "Head of Organization",
     bio: "DFIR and SOC operations. Splunk and SIEM.",
     avatar: "/team/youssefoudriss.png",
-    links: { linkedin: "https://linkedin.com" },
+    links: {linkedin: "https://www.linkedin.com/in/yousef-oudriss-a287a0337/" },
   },
   {
     id: "7",
@@ -120,7 +120,7 @@ export const members: Member[] = [
     bio: "Network security and penetration testing.",
     avatar: "/team/ayakathiri.png",
     achievement: "OSCP",
-    links: { github: "https://github.com", linkedin: "https://linkedin.com" },
+    links: {linkedin: "https://www.linkedin.com/in/aya-kathiri-769a021b4/" },
   },
   {
     id: "8",
@@ -129,7 +129,7 @@ export const members: Member[] = [
     keyRole: "Technical Staff",
     bio: "Privacy and applied crypto research.",
     avatar: "/team/saramountassir.png",
-    links: { website: "https://example.com" },
+    links: { github: "https://github.com/sara-mountassir" },
   },
   {
     id: "9",
@@ -139,7 +139,7 @@ export const members: Member[] = [
     bio: "Former President. Now security engineer at a FAANG.",
     avatar: "/team/ayoubouadih.png",
     achievement: "Alumni mentor",
-    links: { linkedin: "https://linkedin.com" },
+    links: {linkedin: "https://www.linkedin.com/in/ayoub-ouadih-6905202a6/" },
   },
   {
     id: "10",
@@ -149,6 +149,6 @@ export const members: Member[] = [
     bio: "Former President. Now security engineer at a FAANG.",
     avatar: "/team/hindhilal.png",
     achievement: "Alumni mentor",
-    links: { linkedin: "https://linkedin.com" },
+    links: { github: "https://github.com/Userhilal", linkedin: "https://www.linkedin.com/in/hind-hilal/" },
   },
 ];

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Suspense } from "react";
 import { Trophy, Award, Users } from "lucide-react";
 import {
@@ -91,7 +90,7 @@ async function CompetitionsContent() {
           </div>
           <div className="glass-card p-6 text-center">
             <a
-              href="https://ctftime.org"
+              href="https://ctftime.org/team/414843"
               target="_blank"
               rel="noopener noreferrer"
               className="text-2xl font-bold text-[var(--accent)] hover:underline"
@@ -153,14 +152,14 @@ async function CompetitionsContent() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Link
-            href="https://ctftime.org"
+          <a
+            href="https://ctftime.org/team/414843"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-dim)] px-5 py-2.5 text-sm font-semibold text-[#040a06] transition-opacity duration-[0.4s] hover:opacity-90"
           >
             View us on CTFtime →
-          </Link>
+          </a>
         </div>
       </section>
     </>

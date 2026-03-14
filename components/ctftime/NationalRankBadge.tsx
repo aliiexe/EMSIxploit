@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getNationalRank } from "@/lib/ctftime";
 
 const FLAG_MA = "🇲🇦";
@@ -39,7 +38,7 @@ export async function NationalRankBadge({
 
   if (variant === "compact") {
     return (
-      <Link
+      <a
         href="https://ctftime.org/team/414843"
         target="_blank"
         rel="noopener noreferrer"
@@ -47,12 +46,12 @@ export async function NationalRankBadge({
       >
         <span aria-hidden className="text-base leading-none">{FLAG_MA}</span>
         <span>#{rank.countryPlace} in {label}</span>
-      </Link>
+      </a>
     );
   }
 
   return (
-    <Link
+    <a
       href="https://ctftime.org/team/414843"
       target="_blank"
       rel="noopener noreferrer"
@@ -65,6 +64,6 @@ export async function NationalRankBadge({
         {" "}
         <span className="text-[var(--text-muted)]">· CTFtime</span>
       </span>
-    </Link>
+    </a>
   );
 }

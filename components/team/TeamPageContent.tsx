@@ -12,7 +12,7 @@ type TeamPageContentProps = {
 export function TeamPageContent({ displayMembers, totalCount }: TeamPageContentProps) {
   return (
     <>
-      <section className="px-6 py-[8rem] sm:px-8 md:px-10" data-animated-section>
+      <section className="px-6 pt-[8rem] pb-8 sm:px-8 sm:pb-10 md:px-10" data-animated-section>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-extrabold tracking-[-0.03em] text-[var(--text-primary)] sm:text-5xl md:text-6xl">
             Our Team
@@ -24,7 +24,7 @@ export function TeamPageContent({ displayMembers, totalCount }: TeamPageContentP
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-16 sm:px-8 md:px-10" data-animated-section>
+      <section className="mx-auto max-w-[1200px] px-6 pt-4 pb-16 sm:px-8 sm:pt-6 md:px-10" data-animated-section>
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4" style={{ gap: "2rem" }}>
           {displayMembers.map((member, i) => (
             <TeamCard key={member.id} member={member} delay={i * 0.04} />
