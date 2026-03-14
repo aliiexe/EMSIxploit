@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="antialiased">
         <Analytics />
         <ParticleBackground />
-        <div className="fixed inset-0 z-0 flex items-center justify-center">
+        <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center">
           <LogoWatermark />
         </div>
         <Navbar />
