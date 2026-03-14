@@ -11,7 +11,7 @@ import { currentLiveCtf } from "@/data/live";
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
-  title: "emsixploit — Cyber Security Club",
+  title: "EMSIxploit — Cyber Security Club",
   description: "We secure. We hack. We grow.",
 };
 
