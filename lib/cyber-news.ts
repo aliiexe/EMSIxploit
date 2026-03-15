@@ -14,15 +14,40 @@ export interface CyberNewsArticle {
 
 const NEWS_API_BASE = "https://newsapi.org/v2";
 
+/** Keywords that indicate cybersecurity-related content (title or description). */
+const CYBER_KEYWORDS = [
+  "cybersecurity",
+  "cyber security",
+  "information security",
+  "data breach",
+  "ransomware",
+  "malware",
+  "phishing",
+  "hack",
+  "vulnerability",
+  "exploit",
+  "pentest",
+  "penetration test",
+  "infosec",
+  "threat",
+  "zero-day",
+  "CVE",
+];
+
+function isCyberRelated(title: string, description: string | null): boolean {
+  const text = `${title} ${description ?? ""}`.toLowerCase();
+  return CYBER_KEYWORDS.some((k) => text.includes(k.toLowerCase()));
+}
+
 async function fetchCyberNews(): Promise<CyberNewsArticle[]> {
   const apiKey = process.env.NEWS_API_KEY;
   if (!apiKey) return [];
 
   const params = new URLSearchParams({
-    q: "cybersecurity",
+    q: "cybersecurity OR \"cyber security\" OR \"data breach\" OR ransomware OR malware OR hacking",
     language: "en",
     sortBy: "publishedAt",
-    pageSize: "12",
+    pageSize: "24",
     apiKey,
   });
 
@@ -48,7 +73,7 @@ async function fetchCyberNews(): Promise<CyberNewsArticle[]> {
     if (data.status !== "ok" || !Array.isArray(data.articles)) return [];
 
     return data.articles
-      .filter((a) => a?.url && a?.title)
+      .filter((a) => a?.url && a?.title && isCyberRelated(a.title, a.description))
       .slice(0, 12)
       .map((a) => ({
         title: a.title,
