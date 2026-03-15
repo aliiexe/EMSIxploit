@@ -9,6 +9,7 @@ import { SearchModalRoot } from "@/components/search/SearchModalRoot";
 import { LiveBanner } from "@/components/ctftime/LiveBanner";
 import { currentLiveCtf } from "@/data/live";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "EMSIxploit — Cyber Security Club",
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <Analytics />
+        <SpeedInsights />
         <ParticleBackground />
         <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center">
           <LogoWatermark />
