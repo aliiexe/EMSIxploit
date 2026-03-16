@@ -61,7 +61,7 @@ export const members: Member[] = [
     bio: "Security enthusiast. Focus on offensive security and club growth.",
     avatar: "/team/moncefdiraa.jpeg",
     achievement: "1st place — University CTF 2024",
-    links: { github: "https://github.com/Diraa-moncef", linkedin: "https://www.linkedin.com/in/moncef-diraa-5137562a0/" },
+    links: { github: "https://gitlab.com/Diraa-moncef/my-security-project", linkedin: "https://www.linkedin.com/in/moncef-diraa-5137562a0/" },
   },
   {
     id: "2",
@@ -129,7 +129,7 @@ export const members: Member[] = [
     keyRole: "Technical Staff",
     bio: "Privacy and applied crypto research.",
     avatar: "/team/saramountassir.png",
-    links: { github: "https://github.com/sara-mountassir" },
+    links: {linkedin: "https://www.linkedin.com/in/sara-mountassir-6ab643304/", github: "https://github.com/sara-mountassir" },
   },
   {
     id: "9",
