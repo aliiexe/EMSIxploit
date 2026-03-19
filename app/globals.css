@@ -329,3 +329,131 @@ body::before {
 .animate-team-slider {
   animation: team-slider-scroll linear infinite;
 }
+
+/* CTF roster rank badges: shine sweep + optional glow */
+@keyframes ctf-badge-shine {
+  0%,
+  20% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  45%,
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ctf-badge-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(36, 233, 46, 0.25), 0 0 14px rgba(36, 233, 46, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(36, 233, 46, 0.45), 0 0 24px rgba(36, 233, 46, 0.15);
+  }
+}
+
+.ctf-rank-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ctf-rank-badge::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 60%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 65%,
+    transparent 100%
+  );
+  animation: ctf-badge-shine 4s ease-in-out infinite;
+  animation-delay: var(--ctf-shine-delay, 0s);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ctf-rank-badge:hover::after {
+  animation-duration: 2s;
+}
+
+.ctf-rank-badge > .ctf-rank-badge-label {
+  position: relative;
+  z-index: 1;
+}
+
+.ctf-rank-badge-h4xor {
+  animation: ctf-badge-glow-pulse 2.2s ease-in-out infinite;
+}
+
+.ctf-rank-badge-elite::after {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(251, 191, 36, 0.5) 50%,
+    rgba(255, 255, 255, 0) 65%,
+    transparent 100%
+  );
+}
+
+/* Team card: Elite (and future member-assigned badges) — shine + glow */
+@keyframes member-elite-badge-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.45), 0 0 12px rgba(251, 191, 36, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(251, 191, 36, 0.7), 0 0 22px rgba(245, 158, 11, 0.25);
+  }
+}
+
+.member-elite-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  animation: member-elite-badge-glow 2.5s ease-in-out infinite;
+}
+
+.member-elite-badge::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 60%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 32%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 68%,
+    transparent 100%
+  );
+  animation: ctf-badge-shine 3.5s ease-in-out infinite;
+  animation-delay: var(--member-badge-shine-delay, 0s);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.member-elite-badge:hover::after {
+  animation-duration: 1.8s;
+}
+
+.member-elite-badge-label {
+  position: relative;
+  z-index: 1;
+}

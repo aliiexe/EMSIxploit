@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import type { SearchEntry, SearchCategory } from "@/lib/search-index";
 import { sanitizeSearchQuery } from "@/lib/sanitize";
+import { isSafeClientNavHref } from "@/lib/safe-href";
 
 const CATEGORY_ICON: Record<SearchCategory, React.ComponentType<{ className?: string }>> = {
   page: FileText,
@@ -91,6 +92,7 @@ export function SearchModal({ open, onClose }: Props) {
       onClose();
       setQuery("");
       setSelected(0);
+      if (!isSafeClientNavHref(entry.href)) return;
       router.push(entry.href);
     },
     [onClose, router]

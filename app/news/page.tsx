@@ -80,8 +80,11 @@ export default async function NewsPage() {
         {items.length === 0 && (
           <div className="rounded-2xl bg-[var(--bg-secondary)]/50 px-8 py-16 text-center">
             <p className="leading-[1.7] text-[var(--text-muted)]">
-              No news yet. Add entries in <code className="rounded bg-[var(--bg-primary)] px-2 py-0.5 font-mono text-sm text-[var(--accent)]">data/news.ts</code> and
-              put media in <code className="rounded bg-[var(--bg-primary)] px-2 py-0.5 font-mono text-sm text-[var(--accent)]">public/news/</code>.
+              No club announcements yet. Check back soon or{" "}
+              <a href="/contact" className="text-[var(--accent)] underline-offset-2 hover:underline">
+                get in touch
+              </a>
+              .
             </p>
           </div>
         )}

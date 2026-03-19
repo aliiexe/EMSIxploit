@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Globe } from "lucide-react";
@@ -38,6 +39,16 @@ export function TeamCard({ member, delay = 0 }: TeamCardProps) {
       className="group"
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[1rem] bg-[var(--glass-bg)]">
+        {member.elite && (
+          <span
+            className="member-elite-badge absolute left-2 top-2 z-10 rounded-md bg-gradient-to-r from-amber-500/90 to-amber-600/90 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-black"
+            style={
+              { "--member-badge-shine-delay": `${(parseInt(member.id, 10) || 0) * 0.25}s` } as CSSProperties
+            }
+          >
+            <span className="member-elite-badge-label">Elite</span>
+          </span>
+        )}
         {member.avatar ? (
           member.avatar.startsWith("/") ? (
             <Image
@@ -122,7 +133,11 @@ export function TeamCard({ member, delay = 0 }: TeamCardProps) {
       </div>
       <div className="mt-4 text-left">
         <h3 className="font-semibold text-[var(--text-primary)]">{member.name}</h3>
-        <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+        <p
+          className={`mt-0.5 text-xs font-medium uppercase tracking-wider ${
+            member.elite ? "text-[var(--accent)]" : "text-[var(--text-muted)]"
+          }`}
+        >
           {title}
         </p>
       </div>

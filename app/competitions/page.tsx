@@ -10,6 +10,7 @@ import { TEAM_SIZE_RANGE } from "@/data/team";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NationalRankBadge } from "@/components/ctftime/NationalRankBadge";
 import { UpcomingEvents } from "@/components/ctftime/UpcomingEvents";
+import { CtfTeamRankings } from "@/components/competitions/CtfTeamRankings";
 import { getNationalRank, getUpcomingEvents } from "@/lib/ctftime";
 
 const PLACE_SUFFIX = (n: number) =>
@@ -104,6 +105,8 @@ async function CompetitionsContent() {
           <NationalRankBadge variant="default" rank={nationalRank} />
         </div>
       </section>
+
+      <CtfTeamRankings />
 
       <section className="mx-auto max-w-[1200px] px-6 pb-16 sm:px-8 md:px-10" data-animated-section>
         <h2 className="mb-6 text-xl font-extrabold tracking-[-0.03em] text-[var(--text-primary)]">

@@ -19,6 +19,7 @@ export type KeyRoleTitle =
   | "VP"
   | "Lead Researcher"
   | "CTF Captain"
+  | "Head of CTF"
   | "Technical Staff"
   | "Human Resources"
   | "Head of Organization"
@@ -35,6 +36,8 @@ export interface Member {
   /** Path to photo: put images in public/team/ and use "/team/filename.jpg" */
   avatar?: string;
   achievement?: string;
+  /** Distinguished member — shows Elite badge on team card */
+  elite?: boolean;
   links?: {
     github?: string;
     linkedin?: string;
@@ -77,11 +80,12 @@ export const members: Member[] = [
     id: "3",
     name: "Youssef Dirgham",
     role: "staff",
-    keyRole: "Technical Staff",
-    bio: "Malware analysis and threat intelligence.",
+    keyRole: "Head of CTF",
+    bio: "Technical lead for all club CTF operations — strategy, training, and competition prep across EMSIxploit.",
     avatar: "/team/youssefdirgham.png",
-    achievement: "CVE-2024-XXXXX — co-author",
-    links: { github: "https://github.com/sultan56", linkedin: "https://www.linkedin.com/in/youssef-dirgham-21274aab/"},
+    achievement: "The one and only — head of CTF for the whole club",
+    elite: true,
+    links: { github: "https://github.com/sultan56", linkedin: "https://www.linkedin.com/in/youssef-dirgham-21274aab/" },
   },
   {
     id: "4",
