@@ -16,6 +16,8 @@ function rankStyles(rank: CtfPlayerRank): string {
       return "border-neutral-500/50 bg-neutral-900/50 text-neutral-300 ring-1 ring-neutral-500/30";
     case "rookie":
       return "border-sky-500/50 bg-sky-950/40 text-sky-200 ring-1 ring-sky-500/25";
+    case "veteran":
+      return "border-violet-500/55 bg-violet-950/35 text-violet-200 ring-1 ring-violet-500/25";
     case "elite":
       return "border-amber-500/60 bg-amber-950/35 text-amber-300 ring-1 ring-amber-500/35 ctf-rank-badge-elite";
     case "h4xor":
@@ -32,6 +34,8 @@ function rowStyles(rank: CtfPlayerRank): string {
       return "border-l-[5px] border-l-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/[0.12] to-transparent pl-3 shadow-[inset_0_0_0_1px_rgba(36,233,46,0.06)]";
     case "elite":
       return "border-l-[5px] border-l-amber-500 bg-gradient-to-r from-amber-500/[0.1] to-transparent pl-3";
+    case "veteran":
+      return "border-l-[5px] border-l-violet-500 bg-gradient-to-r from-violet-500/[0.08] to-transparent pl-3";
     case "rookie":
       return "border-l-[5px] border-l-sky-500 bg-gradient-to-r from-sky-500/[0.08] to-transparent pl-3";
     case "noob":
