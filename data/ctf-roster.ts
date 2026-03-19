@@ -43,10 +43,10 @@ export interface CtfRosterSlot {
 /** Starting five — main competition lineup */
 export const ctfRosterPrimary: CtfRosterSlot[] = [
   { name: "Youssef Dirgham", rank:"elite", focus: "Lead — all lanes" },
-  { name: "Moncef Diraa", rank: "veteran", focus: "Forensics, Crypto" },
+  { name: "Moncef Diraa", rank: "rookie", focus: "Forensics, Crypto" },
   { name: "Younes Tarik", rank: "rookie", focus: "Web security, AI" },
   { name: "Ali Bourak", rank: "rookie", focus: "Web security, AI" },
-  { name: "Oussama Erremich", rank: "veteran", focus: "Steganography, Forensics" },
+  { name: "Oussama Erremich", rank: "rookie", focus: "Steganography, Forensics" },
 ];
 
 /** Reserves — alternates & emergency subs */
