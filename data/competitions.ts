@@ -45,12 +45,12 @@ export const manualCompetitions: Competition[] = [
     name: "MACC 2026",
     organizer: "DGSSI x SecDojo",
     date: "2026-03-12",
-    place: null,
-    totalTeams: null,
+    place: 44,
+    totalTeams: 1135,
     points: null,
     teamSize: 5,
     eventStart: "2026-03-12",
-    eventFinish: "2026-04-08",
+    eventFinish: "2026-03-19",
   },
 ].map((c) => ({ ...c, source: "manual" as const }));
 

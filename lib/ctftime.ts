@@ -86,8 +86,9 @@ export async function getUpcomingEvents(
 ): Promise<CtftimeEvent[]> {
   const now = Math.floor(Date.now() / 1000);
   const endOfYear = new Date(new Date().getFullYear(), 11, 31, 23, 59, 59).getTime() / 1000;
-  const threeDaysAgo = now - 3 * 24 * 3600;
-  const startTs = start ?? threeDaysAgo;
+  // Keep a larger lookback so long-running live events are still included.
+  const twoWeeksAgo = now - 14 * 24 * 3600;
+  const startTs = start ?? twoWeeksAgo;
   const finishTs = finish ?? endOfYear;
   try {
     const url = `${CTFTIME_API}/events/?limit=${limit}&start=${startTs}&finish=${finishTs}`;

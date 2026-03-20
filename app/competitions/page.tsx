@@ -16,11 +16,31 @@ import { getNationalRank, getUpcomingEvents } from "@/lib/ctftime";
 const PLACE_SUFFIX = (n: number) =>
   n === 1 ? "st" : n === 2 ? "nd" : n === 3 ? "rd" : "th";
 
+function parseEventTs(value?: string): number {
+  if (!value) return NaN;
+  const ts = new Date(value).getTime();
+  if (Number.isFinite(ts)) return ts;
+  const normalized = value.replace(" ", "T");
+  const ts2 = new Date(normalized).getTime();
+  return Number.isFinite(ts2) ? ts2 : NaN;
+}
+
 function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
+  const hasExplicitTime = iso.includes("T") || /\d{1,2}:\d{2}/.test(iso);
+  const date = new Date(iso);
+  if (!hasExplicitTime) {
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  }
+  return date.toLocaleString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
   });
 }
 
@@ -57,7 +77,8 @@ async function CompetitionsContent() {
     const [merged, rank, events] = await Promise.all([
       getCompetitionsMerged(),
       getNationalRank().catch(() => null),
-      getUpcomingEvents(8).catch(() => []),
+      // Fetch a wider window so live events are not dropped by low limits.
+      getUpcomingEvents(40).catch(() => []),
     ]);
     sorted = merged;
     nationalRank = rank;
@@ -70,6 +91,39 @@ async function CompetitionsContent() {
   const places = sorted.map((c) => c.place ?? 999).filter((p) => p < 999);
   const bestPlace = places.length ? Math.min(...places) : 0;
   const hasBest = bestPlace > 0 && sorted.some((c) => c.place === bestPlace);
+  const now = Date.now();
+  const liveUpcomingAsTimeline: Competition[] = upcomingEvents
+    .filter((e) => {
+      const start = parseEventTs(e.start);
+      const finish = parseEventTs(e.finish);
+      if (!Number.isFinite(start) || !Number.isFinite(finish)) return false;
+      return now >= start + 60_000 && now <= finish;
+    })
+    .map((e) => ({
+      id: `ctftime-live-${e.id}`,
+      name: e.title,
+      organizer: e.organizers?.map((o) => o.name).join(", ") || "CTFtime",
+      date: new Date(e.start).toISOString().slice(0, 10),
+      teamSize: 5,
+      ctfTimeUrl: e.ctftime_url || e.url,
+      source: "ctftime",
+      eventStart: e.start,
+      eventFinish: e.finish,
+    }));
+  const existingLiveKeys = new Set(
+    sorted
+      .filter((c) => c.eventStart && c.eventFinish && isCompetitionLive(c))
+      .map((c) => c.ctfTimeUrl || `${c.name}-${c.eventStart}`)
+  );
+  const liveToInject = liveUpcomingAsTimeline.filter(
+    (c) => !existingLiveKeys.has(c.ctfTimeUrl || `${c.name}-${c.eventStart}`)
+  );
+  const timelineCompetitions = [...liveToInject, ...sorted].sort((a, b) => {
+    const aLive = isCompetitionLive(a);
+    const bLive = isCompetitionLive(b);
+    if (aLive !== bLive) return aLive ? -1 : 1;
+    return b.date.localeCompare(a.date);
+  });
 
   return (
     <>
@@ -146,11 +200,11 @@ async function CompetitionsContent() {
           Competition timeline
         </h2>
         <div className="space-y-4 sm:space-y-5">
-          {sorted.map((c, i) => (
+          {timelineCompetitions.map((c, i) => (
             <CompetitionRow
               key={c.id}
               competition={c}
-              isLast={i === sorted.length - 1}
+              isLast={i === timelineCompetitions.length - 1}
             />
           ))}
         </div>
@@ -193,11 +247,12 @@ export default function CompetitionsPage() {
 function isCompetitionLive(c: Competition): boolean {
   if (!c.eventStart || !c.eventFinish) return false;
   const now = Date.now();
-  let start = new Date(c.eventStart).getTime();
-  let finish = new Date(c.eventFinish).getTime();
+  let start = parseEventTs(c.eventStart);
+  let finish = parseEventTs(c.eventFinish);
+  if (!Number.isFinite(start) || !Number.isFinite(finish)) return false;
   if (c.eventFinish.length <= 10) finish = new Date(c.eventFinish + "T23:59:59.999Z").getTime();
   if (c.eventStart.length <= 10) start = new Date(c.eventStart + "T00:00:00.000Z").getTime();
-  return now >= start && now <= finish;
+  return now >= start + 60_000 && now <= finish;
 }
 
 function CompetitionRow({
@@ -228,7 +283,7 @@ function CompetitionRow({
       >
         <div className="flex flex-wrap items-center gap-2">
           <p className="font-mono text-xs text-[var(--text-muted)]">
-            {formatDate(competition.date)}
+            {formatDate(competition.eventStart || competition.date)}
           </p>
           {isLive && (
             <span className="inline-flex items-center gap-1 rounded-full bg-[var(--accent)]/20 px-2 py-0.5 font-mono text-xs font-medium text-[var(--accent)]">
