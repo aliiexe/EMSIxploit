@@ -26,11 +26,14 @@ export const CTF_RANK_TIER: Record<CtfPlayerRank, number> = {
 
 /** Sort roster by grade: highest rank first (h4xor → elite → rookie → noob), then by name. */
 export function sortRosterByRankDesc(slots: CtfRosterSlot[]): CtfRosterSlot[] {
-  return [...slots].sort((a, b) => {
-    const diff = CTF_RANK_TIER[b.rank] - CTF_RANK_TIER[a.rank];
-    if (diff !== 0) return diff;
-    return a.name.localeCompare(b.name);
-  });
+  return slots
+    .map((slot, index) => ({ slot, index }))
+    .sort((a, b) => {
+      const diff = CTF_RANK_TIER[b.slot.rank] - CTF_RANK_TIER[a.slot.rank];
+      if (diff !== 0) return diff;
+      return a.index - b.index;
+    })
+    .map(({ slot }) => slot);
 }
 
 export interface CtfRosterSlot {
@@ -42,18 +45,18 @@ export interface CtfRosterSlot {
 
 /** Starting five — main competition lineup */
 export const ctfRosterPrimary: CtfRosterSlot[] = [
-  { name: "Youssef Dirgham", rank:"elite", focus: "Lead — all lanes" },
-  { name: "Moncef Diraa", rank: "rookie", focus: "Forensics, Crypto" },
-  { name: "Younes Tarik", rank: "rookie", focus: "Web security, AI" },
-  { name: "Ali Bourak", rank: "rookie", focus: "Web security, AI" },
-  { name: "Oussama Erremich", rank: "rookie", focus: "Steganography, Forensics" },
+  { name: "Youssef Dirgham", rank: "elite", focus: "Lead — All Lanes" },
+  { name: "Elias Chakroun", rank: "rookie", focus: "Generalist" },
+  { name: "Salmane El Hjouji", rank: "rookie", focus: "Generalist" },
+  { name: "Saad El Hadaoui", rank: "rookie", focus: "Generalist" },
+  { name: "Hajar Rezzad", rank: "rookie", focus: "Generalist" },
 ];
 
 /** Reserves — alternates & emergency subs */
 export const ctfRosterReserves: CtfRosterSlot[] = [
-  { name: "Player F", rank: "noob", focus: "null" },
-  { name: "Player G", rank: "noob", focus: "null" },
-  { name: "Player H", rank: "noob", focus: "null" },
-  { name: "Player I", rank: "noob", focus: "null" },
-  { name: "Player J", rank: "noob", focus: "null" },
+  { name: "Nissrine Dahhak", rank: "rookie", focus: "Generalist" },
+  { name: "Khadija Kari", rank: "rookie", focus: "Generalist" },
+  { name: "Younes El Borj", rank: "rookie", focus: "Generalist" },
+  { name: "Moncef Diraa", rank: "rookie", focus: "Generalist" },
+  { name: "Oussama Erremich", rank: "rookie", focus: "Generalist" },
 ];
