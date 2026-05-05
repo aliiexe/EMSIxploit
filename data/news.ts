@@ -12,7 +12,17 @@ export interface NewsItem {
   /** Path under public/, e.g. /news/workshop-march.jpg */
   image: string;
   /** Optional body for the detail page (plain text or HTML). */
+  /** Optional label for the card, e.g. "Sponsorship" or "Partnership" */
+  label?: string;
+  /** Optional array of image paths for the detail page gallery */
+  images?: string[];
+  /** Optional body for the detail page (plain text or HTML). */
   content?: string;
+  /** Optional call-to-action link at the bottom of the details page */
+  action?: {
+    url: string;
+    label: string;
+  };
 }
 
 export const newsItems: NewsItem[] = [
@@ -25,6 +35,22 @@ export const newsItems: NewsItem[] = [
     image: "/news/post1.png",
     content:
       "Join us for the opening ceremony on 31 October at 02:30 PM in the Salle de Conférence, EMSI Les Orangers. EMSIxploit and École Marocaine des Sciences de l'Ingénieur welcome you to kick off the year.",
+  },
+  {
+    id: "2",
+    slug: "bootcamp-may-2026",
+    title: "CyberZ Boot Camp",
+    date: "2026-05-09",
+    excerpt: "Join us for an exclusive 2-day Boot Camp in collaboration with CyberZ covering OSINT, Web, networking, and essential tools.",
+    image: "/news/bootcamp/cover.png",
+    label: "Bootcamp",
+    images: ["/news/bootcamp/Post1.png", "/news/bootcamp/Post2.png", "/news/bootcamp/Post3.png", "/news/bootcamp/Post4.png"],
+    content:
+      "EMSIxploit is partnering with CyberZ to deliver a comprehensive 2-day Boot Camp on May 9th and 10th, 2026.\n\nOur expert speakers will dive deep into essential cybersecurity domains:\n- Networking by Oussama AMYAY\n- Web by Saad RMAIDA\n- Tools & Methods by Mustapha BOUTOUB\n- OSINT by Aymane BERHILI\n\nGet ready to elevate your skills with hands-on sessions and expert guidance from the CyberZ team. Mark your calendars and prepare to learn!",
+    action: {
+      url: "https://discord.gg/YrTj9uYP",
+      label: "Join the Discord Server",
+    },
   },
 ];
 

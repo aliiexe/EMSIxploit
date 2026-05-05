@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Calendar } from "lucide-react";
 import { getNewsBySlug, getNewsSlugs, isNewNewsItem } from "@/data/news";
+import AnimatedImageStack from "@/components/ui/AnimatedImageStack";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -41,7 +42,13 @@ export default async function NewsDetailPage({ params }: Props) {
         {/* Two columns: compact image left, content right */}
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:items-start">
           {/* Image: small card, doesn't dominate */}
-          {item.image && !item.image.includes("placeholder") ? (
+          {item.images && item.images.length > 0 ? (
+            <div className="relative w-full overflow-hidden rounded-xl bg-transparent sm:w-80 sm:shrink-0 md:w-[340px]">
+              <div className="relative aspect-[3/4] w-full">
+                <AnimatedImageStack images={item.images} />
+              </div>
+            </div>
+          ) : item.image && !item.image.includes("placeholder") ? (
             <div className="relative w-full overflow-hidden rounded-xl bg-[var(--bg-secondary)]/40 sm:w-80 sm:shrink-0 md:w-[340px]">
               <div className="relative aspect-[3/4] w-full">
                 <Image
@@ -65,6 +72,11 @@ export default async function NewsDetailPage({ params }: Props) {
                 <Calendar className="h-3.5 w-3.5" />
                 {formatDate(item.date)}
               </time>
+              {item.label && (
+                <span className="rounded-md bg-[var(--bg-secondary)] border border-white/10 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--text-primary)]">
+                  {item.label}
+                </span>
+              )}
               {isNewNewsItem(item) && (
                 <span className="rounded-md bg-[var(--accent)] px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-black">
                   New
@@ -82,6 +94,18 @@ export default async function NewsDetailPage({ params }: Props) {
                 {item.content.split(/\n\n+/).map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
+              </div>
+            )}
+            {item.action && (
+              <div className="mt-8">
+                <a
+                  href={item.action.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase tracking-wider text-black shadow-[0_0_15px_rgba(var(--accent-rgb),0.3)] transition-all hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(var(--accent-rgb),0.5)] active:scale-95"
+                >
+                  {item.action.label}
+                </a>
               </div>
             )}
           </div>

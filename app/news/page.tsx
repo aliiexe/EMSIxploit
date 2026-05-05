@@ -35,11 +35,18 @@ export default async function NewsPage() {
               <Link href={`/news/${item.slug}`} className="group block">
                 <article className="overflow-hidden rounded-[1rem] bg-[var(--bg-secondary)]/30 transition-all duration-500 ease-out group-hover:bg-[var(--bg-secondary)]/50">
                   <div className="relative w-full overflow-hidden">
-                    {isNewNewsItem(item) && (
-                      <span className="absolute right-2 top-2 z-10 rounded-md bg-[var(--accent)] px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-black">
-                        New
-                      </span>
-                    )}
+                    <div className="absolute right-2 top-2 z-10 flex flex-wrap justify-end gap-2">
+                      {item.label && (
+                        <span className="rounded-md bg-[var(--bg-primary)]/80 backdrop-blur-md px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--text-primary)] border border-white/10 shadow-sm">
+                          {item.label}
+                        </span>
+                      )}
+                      {isNewNewsItem(item) && (
+                        <span className="rounded-md bg-[var(--accent)] px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-black shadow-sm">
+                          New
+                        </span>
+                      )}
+                    </div>
                     {item.image && !item.image.includes("placeholder") ? (
                       <div className="relative aspect-[3/4] w-full overflow-hidden rounded-t-[1rem]">
                         <Image
